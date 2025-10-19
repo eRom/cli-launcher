@@ -71,9 +71,13 @@ echo "✓ Types Node installés"
 npm install sharp --save-dev
 echo "✓ Sharp installé"
 
+npm install canvas
+echo "✓ Canvas installé"
+
 mkdir -p scripts/
 cp "$TEMPLATE_DIR/scripts/generate-icons.js" scripts/generate-icons.js
-echo "✓ Generate-icons.js copié"
+cp "$TEMPLATE_DIR/scripts/generate-og-image.js" scripts/generate-og-image.js
+echo "✓ Generate-icons.js et generate-og-image.js copiés"
 
 mkdir -p src/lib/
 cp "$TEMPLATE_DIR/src/lib/utils.ts" src/lib/utils.ts
@@ -85,7 +89,8 @@ echo "✓ Layout.tsx copié"
 
 mkdir -p public/
 cp "$TEMPLATE_DIR/public/manifest.json" public/manifest.json
-echo "✓ Manifest.json copié"
+cp "$TEMPLATE_DIR/public/og.png" public/og.png
+echo "✓ Fichiers public copiés"
 
 mkdir -p .claude/commands/
 cp "$TEMPLATE_DIR/commands/neo-project.md" .claude/commands/neo-project.md
@@ -93,6 +98,6 @@ cp "$TEMPLATE_DIR/commands/neo-feature.md" .claude/commands/neo-feature.md
 mkdir -p .cursor/commands/
 cp "$TEMPLATE_DIR/commands/neo-project.md" .cursor/commands/neo-project.md
 cp "$TEMPLATE_DIR/commands/neo-feature.md" .cursor/commands/neo-feature.md
-echo "✓ Fichiers commands copiés"
+echo "✓ Fichiers commandes copiés"
 
 cursor .
