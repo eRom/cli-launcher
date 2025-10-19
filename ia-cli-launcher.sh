@@ -60,7 +60,8 @@ npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["format:staged"]="prettier --write"
 npm pkg set scripts["icons"]="node scripts/generate-icons.js"
 npm pkg set scripts["icons:watch"]="nodemon --watch logo.png --exec \"npm run icons\""
-echo "✓ Prettier installé"
+npm pkg set scripts["og:generate"]="node scripts/generate-og-image.js"
+echo "✓ Prettier, icons, og:generate scripts installés"
 
 npm install lucide-react
 echo "✓ Lucide React installé"
