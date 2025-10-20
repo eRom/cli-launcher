@@ -19,8 +19,21 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 - `npm run format:check` - Check code formatting without changing files
 - `npm run format:staged` - Format staged files (likely for git hooks)
 
+### PWA Setup
+- `npm run pwa:setup` - Prepare Screenshots and optimize static images
+- 
 ### Icons generation
-- `node scripts/generate-icons.js` - Icons generation for Web and SEO
+- `npm run icons` - Icons generation for Web and SEO
+
+### Tests performance Lighthouse
+Dependencies are already installed:
+- `lighthouse` - Main library
+- `chrome-launcher` - Headless Chrome launcher
+
+Available Commands
+- `npm run lighthouse:desktop` - Desktop test only
+- `npm run lighthouse:mobile` - Mobile test only
+- `npm run lighthouse:both` - Desktop + mobile test only
 
 ### Build System
 - Uses Turbopack for both development and production builds
@@ -33,7 +46,7 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4 with CSS-in-JS theming system
-- **UI Components**: Shadcn/ui (New York style) with Radix UI primitives
+- **UI Components**: Shadcn/ui
 - **Icons**: Lucide React
 - **Theme**: next-themes for dark/light mode switching
 - **Animations**: tw-animate-css for Tailwind animations
@@ -62,7 +75,7 @@ src/
 - Shadcn/ui configured with "new-york" style
 - Path aliases configured: `@/components`, `@/lib`, `@/lib/utils`
 - RSC (React Server Components) enabled
-- Components include: Button, Card, Badge, Separator, Checkbox, Avatar, Switch, Spinner, Sonner
+- Components include: Button, Card, Sonner
 
 ## Development Notes
 
@@ -73,9 +86,15 @@ src/
 - Prettier configured with Tailwind CSS plugin for consistent formatting
 
 ### French Language Support
-- PROJECT_IDEA.md indicates this is a French-language project
 - Consider using `react/no-unescaped-entities` ESLint rule for French text
 - SEO optimization with schema.org JSON-LD planned
+
+### Image static (Next/Image)
+- Use **Next/Image** for images
+- **Optimize** static image (except images for SEO)" using `npm run optimize:images`
+- **Sizes Responsive** sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 50vw, 33vw"
+- Placeholder **mode** : `blur`
+- Blur **data** : It's a small JPEG image encoded in base64
 
 ### Accessibility
 - WCAG AA compliance is a project requirement
@@ -86,3 +105,6 @@ src/
 - Meta tags optimization required
 - Social preview tags needed
 - JSON-LD structured data (Person schema) planned
+
+### Performance tests
+- This project includes automated scripts to test performance with Lighthouse: `LIGHTHOUSE.md`
