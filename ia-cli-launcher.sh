@@ -60,6 +60,9 @@ cp "$TEMPLATE_DIR/.prettierrc.json" .
 cp "$TEMPLATE_DIR/.prettierignore" .
 echo "✓ Prettier installé"
 
+npm install class-variance-authority
+echo "✓ Class Variance Authority installé"
+
 npm install lucide-react
 echo "✓ Lucide React installé"
 
