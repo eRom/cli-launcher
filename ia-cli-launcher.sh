@@ -112,7 +112,7 @@ cp "$TEMPLATE_DIR/scripts/generate-screenshots.js" scripts/generate-screenshots.
 cp "$TEMPLATE_DIR/scripts/puppeteer-config.js" scripts/puppeteer-config.js
 echo "✓ Scripts copiés"
 
-npm pkg set scripts.dev="for port in {3000..3005}; do lsof -ti:\$port | xargs kill -9 2>/dev/null; done && next dev --turbopack"
+npm pkg set scripts.dev="pkill -9 -f next && next dev --turbopack"
 npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["format:staged"]="prettier --write"
