@@ -5,7 +5,7 @@
 TEMPLATE_DIR="$HOME/dev/cli-launcher"
 
 # Créer le projet Next.js
-npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir "@/*" --import-alias "@/*" --turbopack
+npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir "@/*" --import-alias "@/*" --turbopack --react-compiler
 
 # Vérifier si la création du projet a réussi
 if [ $? -eq 0 ]; then
