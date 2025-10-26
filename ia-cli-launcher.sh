@@ -81,6 +81,11 @@ echo "✓ Canvas installé"
 npm install --save-dev lighthouse chrome-launcher
 echo "✓ Lighthouse et chrome-launcher installés"
 
+npm install --save-dev eslint-plugin-jsx-a11y@latest @axe-core/cli@latest 
+cp "$TEMPLATE_DIR/eslint.config.mjs" .eslintrc.mjs
+mkdir -p aria-reports/
+echo "✓ eslint-plugin-jsx-a11y, axe-core installés"
+
 mkdir -p src/lib/
 cp "$TEMPLATE_DIR/src/lib/utils.ts" src/lib/utils.ts
 echo "✓ Utils.ts copié"
@@ -112,9 +117,13 @@ cp "$TEMPLATE_DIR/scripts/generate-screenshots.js" scripts/generate-screenshots.
 cp "$TEMPLATE_DIR/scripts/puppeteer-config.js" scripts/puppeteer-config.js
 echo "✓ Scripts copiés"
 
-npm pkg set scripts.dev="pkill -9 -f next && next dev --turbopack"
+#axe http://localhost:3000/programme --tags wcag2a,wcag2aa,wcag21aa --save axe-reports/axe-programme.json --exit
+
+npm pkg set scripts.kill="for port in {3000..3002}; do lsof -ti:$port | xargs kill -9 2>/dev/null; done"
+npm pkg set scripts.dev="npm run kill && next dev --turbopack"
 npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
+npm pkg set scripts["lint:audit"]="npx eslint . --ext .js,.jsx,.ts,.tsx --format=json > aria-reports/eslint-a11y-report.json"
 npm pkg set scripts["format:staged"]="prettier --write"
 npm pkg set scripts["icons"]="node scripts/generate-icons.js"
 npm pkg set scripts["icons:watch"]="nodemon --watch logo.png --exec \"npm run icons\""
@@ -123,10 +132,15 @@ npm pkg set scripts["lighthouse"]="node scripts/lighthouse-test.js"
 npm pkg set scripts["lighthouse:desktop"]="node scripts/lighthouse-test.js http://localhost:3000 desktop"
 npm pkg set scripts["lighthouse:mobile"]="node scripts/lighthouse-test.js http://localhost:3000 mobile"
 npm pkg set scripts["lighthouse:both"]="node scripts/lighthouse-test.js http://localhost:3000 both"
+npm pkg set scripts["lighthouse:audit"]="lighthouse http://localhost:3000 --only-categories=accessibility --output json --output-path=./aria-reports/lighthouse.json --chrome-flags='--headless'"
+
 npm pkg set scripts["optimize:images"]="node scripts/optimize-images.js"
 npm pkg set scripts["screenshots"]="node scripts/generate-screenshots.js"
 npm pkg set scripts["pwa:setup"]="npm run screenshots && npm run optimize:images"
+npm pkg set scripts["axe"]="npx axe http://localhost:3000 --tags wcag2a,wcag2aa,wcag21aa --save ./aria-reports/axe.json --exit"
+
 echo "✓ Package scripts installés"
+
 
 mkdir -p .claude/commands/
 cp "$TEMPLATE_DIR/commands/neo-project.md" .claude/commands/neo-project.md

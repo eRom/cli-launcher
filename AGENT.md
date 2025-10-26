@@ -9,6 +9,7 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 ## Development Commands
 
 ### Core Development
+- `npm run kill` - Kill all dev server 
 - `npm run dev` - Start development server with Turbopack (http://localhost:3000)
 - `npm run build` - Build for production with Turbopack
 - `npm run start` - Start production server
@@ -29,15 +30,17 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 Dependencies are already installed:
 - `lighthouse` - Main library
 - `chrome-launcher` - Headless Chrome launcher
+- `eslint-plugin-jsx-a11y` - Static code analysis
 
 Available Commands
+- `npm run axe` - Accessibility test of the rendered DOM
 - `npm run lighthouse:desktop` - Desktop test only
 - `npm run lighthouse:mobile` - Mobile test only
 - `npm run lighthouse:both` - Desktop + mobile test only
+- `npm run lighthouse:audit` - Accessibility lighthouse tests
 
 ### Build System
 - Uses Turbopack for both development and production builds
-- No test framework is currently configured
 - Prettier with Tailwind CSS plugin for code formatting
 
 ## Architecture
