@@ -1,4 +1,4 @@
-# CLAUDE.md / AGENT.md
+# AGENT.md
 
 This file provides guidance to IA agent when working with code in this repository.
 
@@ -20,12 +20,6 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 - `npm run format:check` - Check code formatting without changing files
 - `npm run format:staged` - Format staged files (likely for git hooks)
 
-### PWA Setup
-- `npm run pwa:setup` - Prepare Screenshots and optimize static images
-- 
-### Icons generation
-- `npm run icons` - Icons generation for Web and SEO
-
 ### Tests performance Lighthouse
 Dependencies are already installed:
 - `lighthouse` - Main library
@@ -34,10 +28,6 @@ Dependencies are already installed:
 
 Available Commands
 - `npm run axe` - Accessibility test of the rendered DOM
-- `npm run lighthouse:desktop` - Desktop test only
-- `npm run lighthouse:mobile` - Mobile test only
-- `npm run lighthouse:both` - Desktop + mobile test only
-- `npm run lighthouse:audit` - Accessibility lighthouse tests
 
 ### Build System
 - Uses Turbopack for both development and production builds
@@ -46,9 +36,9 @@ Available Commands
 ## Architecture
 
 ### Technology Stack
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js (latest version) with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS v4 with CSS-in-JS theming system
+- **Styling**: Tailwind CSS v4
 - **UI Components**: Shadcn/ui
 - **Icons**: Lucide React
 - **Theme**: next-themes for dark/light mode switching
@@ -94,7 +84,6 @@ src/
 
 ### Image static (Next/Image)
 - Use **Next/Image** for images
-- **Optimize** static image (except images for SEO)" using `npm run optimize:images`
 - **Sizes Responsive** sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 50vw, 33vw"
 - Placeholder **mode** : `blur`
 - Blur **data** : It's a small JPEG image encoded in base64
@@ -108,6 +97,3 @@ src/
 - Meta tags optimization required
 - Social preview tags needed
 - JSON-LD structured data (Person schema) planned
-
-### Performance tests
-- This project includes automated scripts to test performance with Lighthouse: `LIGHTHOUSE.md`

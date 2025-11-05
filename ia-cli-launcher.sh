@@ -109,12 +109,6 @@ cp "$TEMPLATE_DIR/LIGHTHOUSE.md" LIGHTHOUSE.md
 echo "✓ LIGHTHOUSE.md copié"
 
 mkdir -p scripts/
-cp "$TEMPLATE_DIR/scripts/generate-icons.js" scripts/generate-icons.js
-cp "$TEMPLATE_DIR/scripts/generate-og-image.js" scripts/generate-og-image.js
-cp "$TEMPLATE_DIR/scripts/lighthouse-test.js" scripts/lighthouse-test.js
-cp "$TEMPLATE_DIR/scripts/optimize-images.js" scripts/optimize-images.js
-cp "$TEMPLATE_DIR/scripts/generate-screenshots.js" scripts/generate-screenshots.js
-cp "$TEMPLATE_DIR/scripts/puppeteer-config.js" scripts/puppeteer-config.js
 echo "✓ Scripts copiés"
 
 #axe http://localhost:3000/programme --tags wcag2a,wcag2aa,wcag21aa --save axe-reports/axe-programme.json --exit
@@ -125,18 +119,6 @@ npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["lint:audit"]="npx eslint . --ext .js,.jsx,.ts,.tsx --format=json > aria-reports/eslint-a11y-report.json"
 npm pkg set scripts["format:staged"]="prettier --write"
-npm pkg set scripts["icons"]="node scripts/generate-icons.js"
-npm pkg set scripts["icons:watch"]="nodemon --watch logo.png --exec \"npm run icons\""
-npm pkg set scripts["og:generate"]="node scripts/generate-og-image.js"
-npm pkg set scripts["lighthouse"]="node scripts/lighthouse-test.js"
-npm pkg set scripts["lighthouse:desktop"]="node scripts/lighthouse-test.js http://localhost:3000 desktop"
-npm pkg set scripts["lighthouse:mobile"]="node scripts/lighthouse-test.js http://localhost:3000 mobile"
-npm pkg set scripts["lighthouse:both"]="node scripts/lighthouse-test.js http://localhost:3000 both"
-npm pkg set scripts["lighthouse:audit"]="lighthouse http://localhost:3000 --only-categories=accessibility --output json --output-path=./aria-reports/lighthouse.json --chrome-flags='--headless'"
-
-npm pkg set scripts["optimize:images"]="node scripts/optimize-images.js"
-npm pkg set scripts["screenshots"]="node scripts/generate-screenshots.js"
-npm pkg set scripts["pwa:setup"]="npm run screenshots && npm run optimize:images"
 npm pkg set scripts["axe"]="npx axe http://localhost:3000 --tags wcag2a,wcag2aa,wcag21aa --save ./aria-reports/axe.json --exit"
 
 echo "✓ Package scripts installés"
