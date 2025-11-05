@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
+  /* React Compiler */
+  reactCompiler: true,
+  
   /* Bundle optimization */
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-slot'],

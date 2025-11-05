@@ -2,10 +2,10 @@
 # Script: next-project-setup.sh
 
 # Variable pointant vers le dossier template
-TEMPLATE_DIR="$HOME/dev/cli-launcher"
+TEMPLATE_DIR="$HOME/dev/cli-launcher/templates"
 
 # Créer le projet Next.js
-npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir "@/*" --import-alias "@/*" --turbopack --react-compiler
+npx create-next-app@latest . --yes
 
 # Vérifier si la création du projet a réussi
 if [ $? -eq 0 ]; then
@@ -27,7 +27,7 @@ if [ $? -eq 0 ]; then
         echo "⚠️  $TEMPLATE_DIR/PROJECT_IDEA.md introuvable"
     fi
 
-     # Copier PROJECT_IDEA.md
+     # Copier AGENT.md
     if [ -f "$TEMPLATE_DIR/AGENT.md" ]; then
         cp "$TEMPLATE_DIR/AGENT.md" .
         echo "✓ AGENT.md copié"
@@ -142,12 +142,11 @@ npm pkg set scripts["axe"]="npx axe http://localhost:3000 --tags wcag2a,wcag2aa,
 echo "✓ Package scripts installés"
 
 
-mkdir -p .claude/commands/
-cp "$TEMPLATE_DIR/commands/neo-project.md" .claude/commands/neo-project.md
-cp "$TEMPLATE_DIR/commands/neo-feature.md" .claude/commands/neo-feature.md
 mkdir -p .cursor/commands/
-cp "$TEMPLATE_DIR/commands/neo-project.md" .cursor/commands/neo-project.md
-cp "$TEMPLATE_DIR/commands/neo-feature.md" .cursor/commands/neo-feature.md
+cp -r "$TEMPLATE_DIR/commands/*.md" .cursor/commands/
 echo "✓ Fichiers commandes copiés"
+mkdir -p .cursor/rules/
+cp -r "$TEMPLATE_DIR/rules/*.md" .cursor/rules/
+echo "✓ Fichiers rules copiés"
 
 cursor .

@@ -4,8 +4,8 @@ set -euo pipefail
 # Répertoire du projet (défini par rapport à scripts/)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(realpath "$SCRIPT_DIR/..")"
-TEMPLATE_LOGO="$PROJECT_DIR/logo.png"
 OUTPUT_DIR="$PROJECT_DIR/public"
+TEMPLATE_LOGO="$OUTPUT_DIR/logo.png"
 
 # Vérifier que le logo existe
 if [[ ! -f "$TEMPLATE_LOGO" ]]; then
