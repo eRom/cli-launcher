@@ -12,11 +12,11 @@ if [ $? -eq 0 ]; then
     echo "Projet Next.js créé. Copie des fichiers depuis $TEMPLATE_DIR..."
 
     # Copier logo.png
-    if [ -f "$TEMPLATE_DIR/logo.png" ]; then
-        cp "$TEMPLATE_DIR/logo.png" .
+    if [ -f "$TEMPLATE_DIR/public/logo.png" ]; then
+        cp "$TEMPLATE_DIR/public/logo.png" .
         echo "✓ logo.png copié"
     else
-        echo "⚠️  $TEMPLATE_DIR/logo.png introuvable"
+        echo "⚠️  $TEMPLATE_DIR/public/logo.png introuvable"
     fi
 
     # Copier PROJECT_IDEA.md
