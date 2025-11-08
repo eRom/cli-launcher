@@ -36,45 +36,48 @@ echo "✓ [dev] Prettier, eslint-plugin-jsx-a11y, axe-core installés"
 
 
 # Copier les fichiers de configuration
-mkdir -p reports/
+# mkdir -p reports/
 
-cp "$TEMPLATE_DIR/eslint.config.mjs" .
-cp "$TEMPLATE_DIR/.prettierrc.json" .
-cp "$TEMPLATE_DIR/.prettierignore" .
-cp "$TEMPLATE_DIR/next.config.ts" .
+cp -rf "$TEMPLATE_DIR/" .
 
-mkdir -p src/lib/
-cp "$TEMPLATE_DIR/src/lib/utils.ts" src/lib/utils.ts
-echo "✓ Utils.ts copié"
+# cp "$TEMPLATE_DIR/eslint.config.mjs" .
+# cp "$TEMPLATE_DIR/.prettierrc.json" .
+# cp "$TEMPLATE_DIR/.prettierignore" .
+# cp "$TEMPLATE_DIR/next.config.ts" .
+# cp "$TEMPLATE_DIR/.cursorignore" .
 
-mkdir -p src/app/
-cp "$TEMPLATE_DIR/src/app/layout.tsx" src/app/layout.tsx
-echo "✓ Layout.tsx copié"
+# mkdir -p src/lib/
+# cp "$TEMPLATE_DIR/src/lib/utils.ts" src/lib/utils.ts
+# echo "✓ Utils.ts copié"
 
-mkdir -p public/
-cp -r "$TEMPLATE_DIR/public/" ./public/
-echo "✓ Fichiers public copiés"
+# mkdir -p src/app/
+# cp "$TEMPLATE_DIR/src/app/layout.tsx" src/app/layout.tsx
+# echo "✓ Layout.tsx copié"
 
-mkdir -p scripts/
-cp -r "$TEMPLATE_DIR/scripts/" ./scripts/
-echo "✓ Scripts copiés"
+# mkdir -p public/
+# cp -r "$TEMPLATE_DIR/public/" ./public/
+# echo "✓ Fichiers public copiés"
 
-mkdir -p .cursor/commands/
-cp -r "$TEMPLATE_DIR/commands/" .cursor/commands/
-echo "✓ Fichiers commandes copiés"
+# mkdir -p scripts/
+# cp -r "$TEMPLATE_DIR/scripts/" ./scripts/
+# echo "✓ Scripts copiés"
 
-mkdir -p .cursor/rules/
-cp -r "$TEMPLATE_DIR/rules/" .cursor/rules/ 
-echo "✓ Fichiers rules copiés"
+# mkdir -p .specs/
+# cp -r "$TEMPLATE_DIR/specs/" .specs/
+# echo "✓ Specs copiés"
 
-cp "$TEMPLATE_DIR/AGENT.md" AGENT.md
-cp "$TEMPLATE_DIR/PROJECT_IDEA.md" PROJECT_IDEA.md
-echo "✓ Agent and Project Idea copiés"
+# mkdir -p .cursor/commands/
+# cp -r "$TEMPLATE_DIR/commands/" .cursor/commands/
+# echo "✓ Fichiers commandes copiés"
 
-#axe http://localhost:3000/programme --tags wcag2a,wcag2aa,wcag21aa --save axe-reports/axe-programme.json --exit
+# mkdir -p .cursor/rules/
+# cp -r "$TEMPLATE_DIR/rules/" .cursor/rules/ 
+# echo "✓ Fichiers rules copiés"
 
-npm pkg set scripts.kill="for port in {3000..3002}; do lsof -ti:$port | xargs kill -9 2>/dev/null; done"
-npm pkg set scripts.dev="next dev --turbopack"
+# cp "$TEMPLATE_DIR/AGENT.md" AGENT.md
+# cp "$TEMPLATE_DIR/AGENT_PROJECT.md" AGENT_PROJECT.md
+# echo "✓ Agent and Project Idea copiés"
+
 npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["lint:audit"]="npx eslint . --ext .js,.jsx,.ts,.tsx --format=json > reports/eslint-a11y-report.json"

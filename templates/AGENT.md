@@ -9,7 +9,6 @@ This is a Next.js 15 project using the App Router, TypeScript, and Tailwind CSS.
 ## Development Commands
 
 ### Core Development
-- `npm run kill` - Kill all dev server 
 - `npm run dev` - Start development server with Turbopack (http://localhost:3000)
 - `npm run build` - Build for production with Turbopack
 - `npm run start` - Start production server
@@ -43,7 +42,7 @@ Available Commands
 - **Icons**: Lucide React
 - **Theme**: next-themes for dark/light mode switching
 - **Animations**: tw-animate-css for Tailwind animations
-- **Notifications**: Sonner for toast notifications
+- **Notifications**: Shadcn Sonner for toast notifications
 
 ### Project Structure
 ```
