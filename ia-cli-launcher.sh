@@ -19,6 +19,9 @@ echo "✓ clsx, tailwind-merge, lucide-react, next-themes et class-variance-auth
 npm install qrcode @types/qrcode --silent
 echo "✓ QRcode installé"
 
+npm i @vercel/analytics --silent
+echo "✓ @vercel/analytics installé"
+
 npm install --save-dev @types/node --silent
 echo "✓ [dev] Types Node installés"
 
@@ -71,13 +74,14 @@ echo "✓ Agent and Project Idea copiés"
 #axe http://localhost:3000/programme --tags wcag2a,wcag2aa,wcag21aa --save axe-reports/axe-programme.json --exit
 
 npm pkg set scripts.kill="for port in {3000..3002}; do lsof -ti:$port | xargs kill -9 2>/dev/null; done"
-npm pkg set scripts.dev="npm run kill && next dev --turbopack"
+npm pkg set scripts.dev="next dev --turbopack"
 npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["lint:audit"]="npx eslint . --ext .js,.jsx,.ts,.tsx --format=json > reports/eslint-a11y-report.json"
 npm pkg set scripts["format:staged"]="prettier --write"
 npm pkg set scripts["axe"]="npx axe http://localhost:3000 --tags wcag2a,wcag2aa,wcag21aa --save ./reports/axe.json --exit"
-
+npm pkg set scripts["lighthouse:desktop"]="lighthouse http://localhost:3000 --preset=desktop --output=json --output-path=./reports/perf-desktop-report --chrome-flags=\"--headless\""
+npm pkg set scripts["lighthouse:mobile"]="lighthouse http://localhost:3000 --preset=perf --output=json --output-path=./reports/perf-mobile-report --chrome-flags=\"--headless\""
 echo "✓ Package scripts installés"
 
 cursor .

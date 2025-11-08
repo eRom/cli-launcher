@@ -7,10 +7,8 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
-    plugins: {
-      "jsx-a11y": jsxA11y,
-    },
     rules: {
+      // Extend jsx-a11y recommended rules (plugin already included in next configs)
       ...jsxA11y.configs.recommended.rules,
     },
   },
