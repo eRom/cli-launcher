@@ -31,7 +31,7 @@ echo "✓ [dev] Sharp, imagemin, imagemin-webp et imagemin-avif installés"
 npm install --save-dev lighthouse chrome-launcher puppeteer --silent
 echo "✓ [dev] Lighthouse, chrome-launcher et puppeteer installés"
 
-npm install --save-dev prettier eslint-plugin-jsx-a11y@latest @axe-core/cli@latest --silent 
+npm install --save-dev prettier prettier-plugin-tailwindcss eslint-plugin-jsx-a11y@latest @axe-core/cli@latest --silent 
 echo "✓ [dev] Prettier, eslint-plugin-jsx-a11y, axe-core installés"
 
 
@@ -78,6 +78,8 @@ cp -rf "$TEMPLATE_DIR/" .
 # cp "$TEMPLATE_DIR/AGENT_PROJECT.md" AGENT_PROJECT.md
 # echo "✓ Agent and Project Idea copiés"
 
+npm pkg set scripts.clean="rm -rf .next out dist"
+npm pkg set scripts.type-check="tsc --noEmit"
 npm pkg set scripts.format="prettier --write ."
 npm pkg set scripts.lint="prettier --check ."
 npm pkg set scripts["lint:audit"]="npx eslint . --ext .js,.jsx,.ts,.tsx --format=json > reports/eslint-a11y-report.json"
