@@ -47,6 +47,7 @@ npm pkg set scripts["format:staged"]="prettier --write"
 npm pkg set scripts["axe"]="npx axe http://localhost:3000 --tags wcag2a,wcag2aa,wcag21aa --save ./reports/axe.json --exit"
 npm pkg set scripts["lighthouse:desktop"]="lighthouse http://localhost:3000 --preset=desktop --output=json --output-path=./reports/perf-desktop-report --chrome-flags=\"--headless\""
 npm pkg set scripts["lighthouse:mobile"]="lighthouse http://localhost:3000 --preset=perf --output=json --output-path=./reports/perf-mobile-report --chrome-flags=\"--headless\""
+npm pkg set scripts["postinstall"]="prisma generate"
 echo "✓ Package scripts installés"
 
 # Ignore outputs
