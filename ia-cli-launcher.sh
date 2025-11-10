@@ -34,50 +34,10 @@ echo "✓ [dev] Lighthouse, chrome-launcher et puppeteer installés"
 npm install --save-dev prettier prettier-plugin-tailwindcss eslint-plugin-jsx-a11y@latest @axe-core/cli@latest --silent 
 echo "✓ [dev] Prettier, eslint-plugin-jsx-a11y, axe-core installés"
 
-
-# Copier les fichiers de configuration
-# mkdir -p reports/
-
+# Copy templates
 cp -rf "$TEMPLATE_DIR/" .
 
-# cp "$TEMPLATE_DIR/eslint.config.mjs" .
-# cp "$TEMPLATE_DIR/.prettierrc.json" .
-# cp "$TEMPLATE_DIR/.prettierignore" .
-# cp "$TEMPLATE_DIR/next.config.ts" .
-# cp "$TEMPLATE_DIR/.cursorignore" .
-
-# mkdir -p src/lib/
-# cp "$TEMPLATE_DIR/src/lib/utils.ts" src/lib/utils.ts
-# echo "✓ Utils.ts copié"
-
-# mkdir -p src/app/
-# cp "$TEMPLATE_DIR/src/app/layout.tsx" src/app/layout.tsx
-# echo "✓ Layout.tsx copié"
-
-# mkdir -p public/
-# cp -r "$TEMPLATE_DIR/public/" ./public/
-# echo "✓ Fichiers public copiés"
-
-# mkdir -p scripts/
-# cp -r "$TEMPLATE_DIR/scripts/" ./scripts/
-# echo "✓ Scripts copiés"
-
-# mkdir -p .specs/
-# cp -r "$TEMPLATE_DIR/specs/" .specs/
-# echo "✓ Specs copiés"
-
-# mkdir -p .cursor/commands/
-# cp -r "$TEMPLATE_DIR/commands/" .cursor/commands/
-# echo "✓ Fichiers commandes copiés"
-
-# mkdir -p .cursor/rules/
-# cp -r "$TEMPLATE_DIR/rules/" .cursor/rules/ 
-# echo "✓ Fichiers rules copiés"
-
-# cp "$TEMPLATE_DIR/AGENT.md" AGENT.md
-# cp "$TEMPLATE_DIR/AGENT_PROJECT.md" AGENT_PROJECT.md
-# echo "✓ Agent and Project Idea copiés"
-
+# Package scripts
 npm pkg set scripts.clean="rm -rf .next out dist"
 npm pkg set scripts.type-check="tsc --noEmit"
 npm pkg set scripts.format="prettier --write ."
@@ -89,5 +49,10 @@ npm pkg set scripts["lighthouse:desktop"]="lighthouse http://localhost:3000 --pr
 npm pkg set scripts["lighthouse:mobile"]="lighthouse http://localhost:3000 --preset=perf --output=json --output-path=./reports/perf-mobile-report --chrome-flags=\"--headless\""
 echo "✓ Package scripts installés"
 
+# Ignore outputs
+echo ".cursor/outputs/" >> .gitignore
+
+
+# Launch Cursor
 cursor .
 
